@@ -1,31 +1,34 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Posts create')
+@section('title', 'Posts edit')
     
 @section('content')
 
-    @csrf
+    <h1>En esta página podrás editar una publicación</h1>
+    <form action="{{ route('posts.update', $post) }}" method="POST">
 
-    <h1>En esta página podrás crear una publicación</h1>
-    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
+
+        @method('put')
+        
         <label>
             Título de la publicación:
             <br>
-            <input type="text" name="titulo">
+            <input type="text" name="titulo" value="{{ $post->titulo }}">
         </label>
 
         <br>
         <label>
             Extracto publicación:
             <br>
-            <textarea name="extracto" rows="2"></textarea>
+            <textarea name="extracto" rows="2">{{ $post->extracto }}</textarea>
         </label>
 
         <br>
         <label>
             Contenido publicación:
             <br>
-            <textarea name="contenido" rows="10"></textarea>
+            <textarea name="contenido" rows="10">{{ $post->contenido }}</textarea>
         </label>
 
         <br>
@@ -42,6 +45,6 @@
             <option value="publico" selected>Público</option>
         </select>
         <br>
-        <button type="submit">Enviar formulario</button>
+        <button type="submit">Actualizar formulario</button>
     </form>
 @endsection

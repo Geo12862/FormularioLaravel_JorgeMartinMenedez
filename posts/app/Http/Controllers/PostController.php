@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index(){
+
+        $posts = Post::orderBy('id', 'desc')->paginate();
+
         //return "Bien venido a la página posts";
-        return view('posts.index');
+        return view('posts.index', compact('posts'));
     }
 
     public function create(){
@@ -16,8 +20,45 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function show($post){
+    public function store(Request $request){
+        //return $request->all(); 
+        $post = new Post();
+
+        $post->titulo = $request->titulo;
+        $post->extracto = $request->extracto;
+        $post->contenido = $request->contenido;
+        //$post->caducable = $request->caducable;
+        //$post->comentable = $request->comentable;
+        //$post->acceso = $request->acceso;
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post);
+    }
+
+    public function show(Post $post){
         //return "Bienvenido al curso: $post";
         return view('posts.show', compact('post'));
+        //return $post;
+    }
+
+    public function edit(Post $post){
+        //return "Bienvenido al curso: $post";
+        return view('posts.edit', compact('post'));
+        //return $post;
+    }
+
+    public function update(Request $request, Post $post){
+        //return $post;
+        $post->titulo = $request->titulo;
+        $post->extracto = $request->extracto;
+        $post->contenido = $request->contenido;
+        //$post->caducable = $request->caducable;
+        //$post->comentable = $request->comentable;
+        //$post->acceso = $request->acceso;
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post);
     }
 }
