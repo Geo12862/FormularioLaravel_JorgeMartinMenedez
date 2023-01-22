@@ -11,6 +11,12 @@
 
         @method('put')
 
+        @if ($errors->any())
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        @endif
+        
         <label>
             Título de la publicación:
             <br>

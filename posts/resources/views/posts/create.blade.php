@@ -8,6 +8,11 @@
 
     <h1>En esta página podrás crear una publicación</h1>
     <form action="{{ route('posts.store') }}" method="POST">
+        @if ($errors->any())
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        @endif
         <label>
             Título de la publicación:
             <br>

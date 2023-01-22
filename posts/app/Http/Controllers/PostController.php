@@ -27,7 +27,7 @@ class PostController extends Controller
     public function store(StorePosts $request){
   
         //return $request->all(); 
-        $post = new Post();
+       /* $post = new Post();
 
         $post->titulo = $request->titulo;
         $post->extracto = $request->extracto;
@@ -36,7 +36,8 @@ class PostController extends Controller
         //$post->comentable = $request->comentable;
         //$post->acceso = $request->acceso;
 
-        $post->save();
+        $post->save();*/
+        $post = Post::create($request->all());
 
         return redirect()->route('posts.show', $post);
     }
@@ -56,14 +57,16 @@ class PostController extends Controller
     public function update(UpdatePosts $request, Post $post){
 
         //return $post;
-        $post->titulo = $request->titulo;
+       /* $post->titulo = $request->titulo;
         $post->extracto = $request->extracto;
         $post->contenido = $request->contenido;
         //$post->caducable = $request->caducable;
         //$post->comentable = $request->comentable;
         //$post->acceso = $request->acceso;
 
-        $post->save();
+        $post->save();*/
+
+        $post->update($request->all());
 
         return redirect()->route('posts.show', $post);
     }
