@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StorePosts;
+use App\Http\Requests\UpdatePosts;
+
+
 class PostController extends Controller
 {
     public function index(){
@@ -20,7 +24,8 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request){
+    public function store(StorePosts $request){
+  
         //return $request->all(); 
         $post = new Post();
 
@@ -48,7 +53,8 @@ class PostController extends Controller
         //return $post;
     }
 
-    public function update(Request $request, Post $post){
+    public function update(UpdatePosts $request, Post $post){
+
         //return $post;
         $post->titulo = $request->titulo;
         $post->extracto = $request->extracto;

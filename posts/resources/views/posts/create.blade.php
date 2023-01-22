@@ -11,22 +11,37 @@
         <label>
             Título de la publicación:
             <br>
-            <input type="text" name="titulo">
+            <input type="text" name="titulo" value="{{ old('titulo') }}">
         </label>
+        @error('titulo')
+            <br>
+            <small>*{{ $message }}</small>
+            <br>
+        @enderror
 
         <br>
         <label>
             Extracto publicación:
             <br>
-            <textarea name="extracto" rows="2"></textarea>
+            <textarea name="extracto" rows="2">{{ old('extracto') }}</textarea>
         </label>
+        @error('extracto')
+            <br>
+            <small>*{{ $message }}</small>
+            <br>
+        @enderror
 
         <br>
         <label>
             Contenido publicación:
             <br>
-            <textarea name="contenido" rows="10"></textarea>
+            <textarea name="contenido" rows="10">{{ old('contenido') }}</textarea>
         </label>
+        @error('contenido')
+            <br>
+            <small>*{{ $message }}</small>
+            <br>
+        @enderror
 
         <br>
         <label>
@@ -41,6 +56,11 @@
             <option value="privado">Privado</option>
             <option value="publico" selected>Público</option>
         </select>
+        @error('acceso')
+            <br>
+            <small>*{{ $message }}</small>
+            <br>
+        @enderror
         <br>
         <button type="submit">Enviar formulario</button>
     </form>
