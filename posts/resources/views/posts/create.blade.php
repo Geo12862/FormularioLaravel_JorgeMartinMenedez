@@ -57,18 +57,14 @@
         </label>
         <br>
         <label>
-            <input type="checkbox" name="caducable">Comentable
+            <input type="checkbox" name="comentable">Comentable
         </label>
         <br>
         <select name="acceso">
             <option value="privado">Privado</option>
             <option value="publico" selected>Público</option>
         </select>
-        @error('acceso')
-            <br>
-            <small>*{{ $message }}</small>
-            <br>
-        @enderror
+
         <br>
         <button type="submit">Enviar formulario</button>
     </form>

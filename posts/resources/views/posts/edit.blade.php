@@ -57,22 +57,18 @@
 
         <br>
         <label>
-            <input type="checkbox" name="caducable">Caducable
+            <input type="checkbox" name="caducable" value="caducable" @checked(old('caducable', $post->caducable))>Caducable
         </label>
         <br>
         <label>
-            <input type="checkbox" name="caducable">Comentable
+            <input type="checkbox" name="comentable" value="comentable" @checked(old('comentable', $post->comentable))>Comentable
         </label>
         <br>
         <select name="acceso">
             <option value="privado">Privado</option>
             <option value="publico" selected>Público</option>
         </select>
-        @error('acceso')
-            <br>
-            <small>*{{ $message }}</small>
-            <br>
-        @enderror
+       
         <br>
         <button type="submit">Actualizar formulario</button>
     </form>

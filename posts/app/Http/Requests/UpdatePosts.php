@@ -26,7 +26,10 @@ class UpdatePosts extends FormRequest
         return [
             'titulo' => 'required',
             'extracto' => 'required',
-            'contenido' => 'required'
+            'contenido' => 'required',
+            'caducable',
+            'comentable',
+            'acceso'
         ];
     }
 
