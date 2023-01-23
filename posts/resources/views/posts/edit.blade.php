@@ -5,6 +5,9 @@
 @section('content')
 
     <h1>En esta página podrás editar una publicación</h1>
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('posts.index') }}">Volver a posts</a>
+    <br>
     <form action="{{ route('posts.update', $post) }}" method="POST">
 
         @csrf
@@ -16,7 +19,7 @@
                 <p>{{ $error }}</p>
             @endforeach
         @endif
-        
+
         <label>
             Título de la publicación:
             <br>

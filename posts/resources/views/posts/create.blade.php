@@ -7,6 +7,9 @@
     @csrf
 
     <h1>En esta página podrás crear una publicación</h1>
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('posts.index') }}">Volver a posts</a>
+    <br>
     <form action="{{ route('posts.store') }}" method="POST">
         @if ($errors->any())
             @foreach($errors->all() as $error)

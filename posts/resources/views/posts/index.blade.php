@@ -4,6 +4,7 @@
     
 @section('content')
     <h1>Bien venido a la página posts</h1>
+    <a href="{{ route('home') }}">Home</a>
     <a href="{{ route('posts.create') }}">Crear Post</a>
     <ul>
         @foreach ($posts as $post)
